@@ -2,13 +2,13 @@
 
 buildscript{
 
-    extra["sdkVersion"] = 28
+    extra["sdkVersion"] = 31
     extra["supportLibVersion"] = "28.0.0"
 
     repositories(){
         google()
         mavenCentral()
-    }
+    } 
 
 
     dependencies{

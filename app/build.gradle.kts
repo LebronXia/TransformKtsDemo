@@ -1,21 +1,25 @@
 plugins {
     id("com.android.application")
-    id("kotlin-android")
+    kotlin("android")
+    kotlin("android.extensions")
+    id("trace-plugin")
 }
+
 
 android {
     val sdkVersion: Int by rootProject.extra
-    compileSdkVersion(sdkVersion)
+    compileSdk = sdkVersion
 
     defaultConfig {
         applicationId = "com.pience.gradlektsdemo"
-        minSdkVersion(21)
-        targetSdkVersion(31)
+        minSdk = 23
+        targetSdk = 30
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
 //        getByName("release"){
@@ -58,5 +62,9 @@ dependencies {
     testImplementation(com.pience.gradlektsdemo.deps.android.test.junit)
     androidTestImplementation(com.pience.gradlektsdemo.deps.android.test.runner)
     androidTestImplementation(com.pience.gradlektsdemo.deps.android.test.espressoCore)
+    implementation("commons-io:commons-io:2.6")
+
+//    id("hello-plugin")
+//    id("privacysentry-plugin")
 }
 

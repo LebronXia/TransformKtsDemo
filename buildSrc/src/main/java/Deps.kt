@@ -5,7 +5,7 @@ package com.pience.gradlektsdemo
  */
 object deps {
     object plugin {
-        val gradle = "com.android.tools.build:gradle:7.0.2"
+        val gradle = "com.android.tools.build:gradle:7.0.3"
         val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
     }
 

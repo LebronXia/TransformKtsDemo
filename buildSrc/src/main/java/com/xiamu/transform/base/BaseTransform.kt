@@ -158,13 +158,14 @@ abstract class BaseTransform : Transform(){
         //创建目录
         FileUtils.forceMkdir(outputDir)
         if (isIncremental){
-            directoryInput.changedFiles.entries.forEach { entry ->
-                val inputFile = entry.key
+            val changedFilesMap = directoryInput.changedFiles
+            for (mutableEntry in changedFilesMap){
+                val inputFile = mutableEntry.key
                 //最终文件应该存放的路径
 //                val destFilePath = inputFile.absolutePath.replace(srcDirPath, destDirPath)
 //                val destFile = File(destFilePath)
 
-                when(entry.value){
+                when(mutableEntry.value){
                     Status.ADDED, Status.CHANGED ->{
                         //处理class文件
                         modifyClassFile(inputFile, srcDirPath, destDirPath, temporaryDir)
@@ -175,12 +176,17 @@ abstract class BaseTransform : Transform(){
                         if (destFile.exists()){
                             destFile.delete()
                         }
+                        continue
                     }
                     Status.NOTCHANGED -> {
-
+                        continue
+                    }
+                    else -> {
+                        continue
                     }
                 }
             }
+
         } else {
             //过滤出是文件的，而不是目录
             directoryInput.file.walkTopDown().filter { it.isFile }

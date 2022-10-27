@@ -23,6 +23,7 @@ private val methodHookPoints = listOf(
 
 private val filedHookPoints = listOf(
     PrivacySentryHookPoint(
+
         owner = "android/os/Build",
         name = "BRAND",
         desc = "Ljava/lang/String"
